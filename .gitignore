@@ -4,9 +4,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Additional files to ignore
-API_practice
-
 # C extensions
 *.so
 
