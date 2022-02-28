@@ -1,53 +1,15 @@
-# world_weather_analysis
-Analyzing weather patterns using APIs, Jupyter &amp; Matplotlib
 
-Client's ideal hotels? Your first task was to define what you meant by "ideal." So, over the course of the conversation, you narrowed that to hotels that were (1) within a given range of latitude and longitude and that (2) provided the right kind of weather for the client.
+# World Weather Analysis
 
-Basic Project Plan
+## *Analyze weather patterns and retrieve city, lodging and transportation data using APIs*
+---
 
-Task: Collect and analyze weather data across cities worldwide.
-Purpose: PlanMyTrip will use the data to recommend ideal hotels based on clients' weather preferences.
-Method: Create a Pandas DataFrame with 500 or more of the world's unique cities and their weather data in real time. This process will entail collecting, analyzing, and visualizing the data.
 
-Your analysis of the data will be split into three main parts, or stages.
+### Project Overview
+Our first task was to define what a client meant as "ideal" travel.  Over the course of the conversation, we narrowed that down to hotels that were within a given range of latitude and longitude of their preferred destination, and provided the right kind of weather for the client.   We first collected and analyzed weather data across cities worldwide, then recommended ideal hotels based on clients' weather preferences.  We added the "Current Weather" description in this portion of the analysis, as part of the included deliverables.  Our analysis was split into three main parts, or stages. 
 
-Collect the Data
+1. Using the NumPy module we generated approximately 1,500 to 2,000 random latitudes and longitudes, then used the citipy module to list the nearest city to the latitudes and longitudes.  We folowed up by using the OpenWeatherMap API to request the current weather data from each unique city in our list, parsed the JSON data from the API request, added the information to a DataFrame and exported the data to a CSV.
 
-Use the NumPy module to generate more than 1,500 random latitudes and longitudes.
-Use the citipy module to list the nearest city to the latitudes and longitudes.
-Use the OpenWeatherMap API to request the current weather data from each unique city in your list.
-Parse the JSON data from the API request.
-Collect the following data from the JSON file and add it to a DataFrame:
-City, country, and date
-Latitude and longitude
-Maximum temperature
-Humidity
-Cloudiness
-Wind speed
+2. Using the DataFrame from the first part of the analysis, we created a user input feature to request the optimal minimum and maximum temperatures for travel, and created a function to return only the "preferred" locations and their assosicated weather data to a new DataFrame and exported to a CSV.  We called upon the Google Maps Nearby Search API to add the closest hotels to the latitudes and longitudes compiled into our preferred cities DataFrame, then created a Google Maps figure noting all requested information using a map pop-up marker layer. 
 
-Exploratory Analysis with Visualization
-
-Create scatter plots of the weather data for the following comparisons:
-Latitude versus temperature
-Latitude versus humidity
-Latitude versus cloudiness
-Latitude versus wind speed
-Determine the correlations for the following weather data:
-Latitude and temperature
-Latitude and humidity
-Latitude and cloudiness
-Latitude and wind speed
-Create a series of heatmaps using the Google Maps and Places API that showcases the following:
-Latitude and temperature
-Latitude and humidity
-Latitude and cloudiness
-Latitude and wind speed
-Visualize Travel Data
-
-Create a heatmap with pop-up markers that can display information on specific cities based on a customer's travel preferences. Complete these steps:
-
-Filter the Pandas DataFrame based on user inputs for a minimum and maximum temperature.
-Create a heatmap for the new DataFrame.
-Find a hotel from the cities' coordinates using Google's Maps and Places API, and Search Nearby feature.
-Store the name of the first hotel in the DataFrame.
-Add pop-up markers to the heatmap that display information about the city, current maximum temperature, and a hotel in the city.
+3. In our third stage of the analysis, we imported the data from the previous stage and created a Google Maps figure displaying the route from start point to endpoint between four (4) of the preferred cities in one country.  This was meant to exemplify a potential "trip" based on the client's preferred weather parameters for travel, utilizing the Google Maps Directions Layer.  In order to display the correct markers, we had to first ultilize the to_numpy function to convert the latitudes into pairs of tuples.  To follow up, we added the same style of markers that we utilized in stage two to display the hotel name, location and weather data for each of the four (4) selected cities. 
